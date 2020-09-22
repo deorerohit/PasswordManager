@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference app:key="changePassword"
+        app:title="Reset Password"
+        app:summary="Change the master password"
+        app:iconSpaceReserved="false"
+        app:icon="@drawable/password_reset">
+        <intent android:targetClass="com.example.passwordmanager.ResetPasswordActivity"
+            android:targetPackage="com.example.passwordmanager"/>
+
+    </Preference>
+
+</PreferenceScreen>

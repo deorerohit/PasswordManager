@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/title_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:text="This is title"
+            android:textSize="16sp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_toStartOf="@id/optionMenu_textview"/>
+
+        <TextView
+            android:id="@+id/username_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="This Username"
+            android:textSize="14sp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_below="@id/title_textview"
+            android:layout_toStartOf="@id/optionMenu_textview"/>
+
+        <TextView
+            android:id="@+id/password_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="This is Password"
+            android:textSize="14sp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_below="@id/username_textview"
+            android:layout_toStartOf="@id/optionMenu_textview"/>
+
+        <ImageView
+            android:id="@+id/optionMenu_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icons8vertical"
+            android:textSize="30sp"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp" />
+
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/copyUsername_menuitem"
+        android:title="Copy username"/>
+
+    <item android:id="@+id/copuPassword_menuitem"
+        android:title="Copy password"/>
+
+    <item android:id="@+id/delete_menuitem"
+        android:title="Delete"/>
+
+</menu>
