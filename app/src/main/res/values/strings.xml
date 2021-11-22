@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PasswordManager</string>
+    <string name="update">Update</string>
 </resources>

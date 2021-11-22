@@ -1,17 +1,20 @@
 package com.example.passwordmanager;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class AddCredentials extends AppCompatActivity {
 
-    TextInputEditText title_edittext,username_edittext, password_edittext;
+    TextInputEditText title_edittext, username_edittext, password_edittext;
     MaterialButton button;
 
     public static final String EXTRA_ID = "com.example.passwordmanager.EXTRA_ID";
@@ -19,7 +22,27 @@ public class AddCredentials extends AppCompatActivity {
     public static final String EXTRA_USERNAME = "com.example.passwordmanager.EXTRA_USERNAME";
     public static final String EXTRA_PASSWORD = "com.example.passwordmanager.EXTRA_PASSWORD";
 
-    private Intent  gotThisIntent;
+    private Intent gotThisIntent;
+
+    public static boolean validateInput(Object title) {
+        if (title instanceof String)
+            return true;
+        else
+            return false;
+    }
+
+    public static boolean validateUsername(String username) {
+        Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(username);
+        return !m.find();
+    }
+
+    public static boolean validatePasssword(String password) {
+        String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+        Pattern p = Pattern.compile(PASSWORD_PATTERN);
+        Matcher m = p.matcher(password);
+        return m.matches();
+    }
 
 
     @Override
@@ -36,15 +59,14 @@ public class AddCredentials extends AppCompatActivity {
 
         gotThisIntent = getIntent();
 
-        if(gotThisIntent.hasExtra(EXTRA_ID)) {
+        if (gotThisIntent.hasExtra(EXTRA_ID)) {
 
-            button.setText("Update");
+            button.setText(R.string.update);
             setTitle("Update Credentials");
             title_edittext.setText(gotThisIntent.getStringExtra(EXTRA_TITLE));
             username_edittext.setText(gotThisIntent.getStringExtra(EXTRA_USERNAME));
             password_edittext.setText(gotThisIntent.getStringExtra(EXTRA_PASSWORD));
-        }
-        else {
+        } else {
             button.setText("Save");
             setTitle("Add Credentials");
         }
@@ -64,16 +86,13 @@ public class AddCredentials extends AppCompatActivity {
 
         long id = gotThisIntent.getLongExtra(EXTRA_ID, -1);
 
-        if(id == -1) {
+        if (id == -1) {
             setResult(RESULT_OK, data);
             finish();
-        }
-        else {
+        } else {
             data.putExtra(EXTRA_ID, id);
             setResult(RESULT_OK, data);
             finish();
         }
-
-
     }
 }
